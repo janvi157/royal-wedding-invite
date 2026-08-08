@@ -1,0 +1,2789 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Royal Celebration | Wedding Invitation</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --black:#070204;
+    --black2:#120408;
+    --burgundy:#260914;
+    --wine:#421421;
+    --wine2:#5B1D2C;
+    --gold:#B98A32;
+    --gold2:#D5AE5A;
+    --gold3:#F0D58A;
+    --cream:#FFF8E8;
+    --cream2:#E9DCC5;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    overflow-x:hidden;
+    color:var(--cream);
+    font-family:"Cormorant Garamond",serif;
+
+    background:
+        radial-gradient(circle at 50% 0%,rgba(112,34,54,.45),transparent 32%),
+        radial-gradient(circle at 10% 50%,rgba(145,93,36,.10),transparent 28%),
+        linear-gradient(135deg,#070204,#16060B 45%,#080304);
+}
+
+body.locked{
+    overflow:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+    opacity:.12;
+
+    background-image:
+        radial-gradient(circle,rgba(240,213,138,.18) 1px,transparent 1.5px);
+
+    background-size:32px 32px;
+}
+
+
+/* =====================================================
+   OPENING DOOR
+===================================================== */
+
+#doorScreen{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(104,31,48,.85),
+            rgba(53,12,25,.95) 40%,
+            rgba(18,5,10,.98) 75%,
+            #050203
+        );
+}
+
+#doorScreen::before{
+    content:"";
+    position:absolute;
+    inset:15px;
+
+    border:1px solid rgba(240,213,138,.65);
+
+    box-shadow:
+        inset 0 0 100px rgba(0,0,0,.8),
+        0 0 60px rgba(0,0,0,.8);
+}
+
+.door-wrapper{
+    position:relative;
+
+    width:min(88vw,520px);
+    height:min(82vh,700px);
+
+    min-height:530px;
+
+    perspective:1800px;
+}
+
+.door-frame{
+    position:absolute;
+    inset:0;
+    z-index:1;
+
+    border:5px solid var(--gold);
+    outline:1px solid var(--gold3);
+
+    box-shadow:
+        0 0 0 9px #14060B,
+        0 0 0 11px #76531F,
+        0 35px 90px rgba(0,0,0,.9);
+}
+
+.door-frame::before{
+    content:"";
+    position:absolute;
+    inset:18px;
+
+    border:1px solid rgba(240,213,138,.65);
+}
+
+.door{
+    position:absolute;
+    top:0;
+    bottom:0;
+
+    width:50%;
+    z-index:5;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(119,38,58,.8),
+            transparent 45%
+        ),
+
+        linear-gradient(
+            90deg,
+            #100408,
+            #3B101C 40%,
+            #5B1D2C 52%,
+            #2C0B15 80%,
+            #100408
+        );
+
+    border:2px solid #B98A32;
+
+    transition:
+        transform 1.8s cubic-bezier(.77,0,.18,1);
+}
+
+.door.left{
+    left:0;
+    transform-origin:left center;
+}
+
+.door.right{
+    right:0;
+    transform-origin:right center;
+}
+
+.door::before{
+    content:"";
+    position:absolute;
+    inset:20px;
+
+    border:1px solid rgba(240,213,138,.45);
+}
+
+.door::after{
+    content:"❧";
+
+    position:absolute;
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    color:var(--gold3);
+    font-size:58px;
+    opacity:.65;
+}
+
+#doorScreen.open .door.left{
+    transform:rotateY(-110deg);
+}
+
+#doorScreen.open .door.right{
+    transform:rotateY(110deg);
+}
+
+
+/* =====================================================
+   DOOR TEXT
+===================================================== */
+
+.door-content{
+    position:absolute;
+    inset:0;
+
+    z-index:20;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:40px 25px;
+
+    transition:
+        opacity .5s ease,
+        transform .7s ease;
+}
+
+#doorScreen.open .door-content{
+    opacity:0;
+    transform:translateY(-15px) scale(.82);
+}
+
+.door-small{
+    color:var(--gold3);
+
+    font-family:"Cinzel",serif;
+    font-size:10px;
+    letter-spacing:4px;
+
+    margin-bottom:22px;
+}
+
+.door-title{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    color:var(--gold3);
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:clamp(58px,14vw,95px);
+
+    line-height:.82;
+
+    text-shadow:
+        0 0 30px rgba(240,213,138,.25);
+}
+
+.door-title span{
+    display:block;
+}
+
+.door-subtitle{
+    color:var(--cream2);
+
+    font-family:"Cinzel",serif;
+
+    font-size:9px;
+    letter-spacing:3px;
+
+    margin-top:25px;
+}
+
+
+/* =====================================================
+   TAP TO OPEN — OUTSIDE
+===================================================== */
+
+.open-btn{
+    position:absolute;
+
+    z-index:100;
+
+    left:50%;
+    bottom:-65px;
+
+    transform:translateX(-50%);
+
+    min-width:175px;
+
+    padding:14px 25px;
+
+    border:1px solid var(--gold3);
+    border-radius:50px;
+
+    background:rgba(15,4,8,.95);
+
+    color:var(--gold3);
+
+    font-family:"Cinzel",serif;
+
+    font-size:10px;
+    letter-spacing:3px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.5);
+
+    transition:.4s;
+}
+
+.open-btn:hover{
+    background:var(--gold3);
+    color:#17060B;
+
+    box-shadow:
+        0 0 35px rgba(240,213,138,.3);
+}
+
+#doorScreen.open .open-btn{
+    opacity:0;
+    pointer-events:none;
+}
+
+
+/* =====================================================
+   MAIN WEBSITE
+===================================================== */
+
+#website{
+    opacity:0;
+    visibility:hidden;
+
+    transition:opacity 1.2s ease;
+}
+
+#website.show{
+    opacity:1;
+    visibility:visible;
+}
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.back-btn{
+    position:fixed;
+
+    top:18px;
+    left:18px;
+
+    z-index:5000;
+
+    padding:9px 17px;
+
+    border:1px solid rgba(240,213,138,.55);
+    border-radius:50px;
+
+    background:rgba(15,4,8,.78);
+
+    backdrop-filter:blur(12px);
+
+    color:var(--gold3);
+
+    font-family:"Cinzel",serif;
+
+    font-size:9px;
+    letter-spacing:2px;
+
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    min-height:100svh;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:80px 20px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            rgba(12,3,7,.35),
+            rgba(12,3,7,.88)
+        ),
+
+        radial-gradient(
+            circle at center,
+            rgba(105,31,49,.6),
+            transparent 55%
+        ),
+
+        url("wedding-hero.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:25px;
+
+    border:1px solid rgba(240,213,138,.38);
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 10%,
+            rgba(5,2,4,.75) 90%
+        );
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+
+    max-width:950px;
+}
+
+.pre-title{
+    color:var(--gold3);
+
+    font-family:"Cinzel",serif;
+
+    font-size:11px;
+    letter-spacing:6px;
+
+    margin-bottom:25px;
+}
+
+.hero h1{
+    color:var(--cream);
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:clamp(80px,16vw,165px);
+
+    font-weight:400;
+
+    line-height:.78;
+
+    text-shadow:
+        0 10px 35px rgba(0,0,0,.75);
+}
+
+.hero .amp{
+    display:block;
+
+    color:var(--gold3);
+
+    font-size:.4em;
+
+    margin:20px 0;
+}
+
+.gold-line{
+    width:110px;
+    height:1px;
+
+    background:var(--gold3);
+
+    margin:35px auto;
+
+    position:relative;
+}
+
+.gold-line::before,
+.gold-line::after{
+    content:"◆";
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:var(--gold3);
+
+    font-size:7px;
+}
+
+.gold-line::before{
+    left:-12px;
+}
+
+.gold-line::after{
+    right:-12px;
+}
+
+.hero-date{
+    color:var(--cream);
+
+    font-family:"Cinzel",serif;
+
+    font-size:13px;
+
+    letter-spacing:5px;
+}
+
+
+/* =====================================================
+   COMMON
+===================================================== */
+
+section{
+    position:relative;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:105px 20px;
+
+    overflow:hidden;
+}
+
+.section-title{
+    position:relative;
+    z-index:2;
+
+    text-align:center;
+
+    margin-bottom:55px;
+}
+
+.section-title span{
+    color:var(--gold2);
+
+    font-family:"Cinzel",serif;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+}
+
+.section-title h2{
+    color:var(--gold3);
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:68px;
+
+    font-weight:400;
+
+    margin-top:10px;
+}
+
+
+/* =====================================================
+   COUPLE
+===================================================== */
+
+.couple{
+    max-width:none;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(103,29,47,.65),
+            transparent 48%
+        ),
+
+        linear-gradient(
+            135deg,
+            #0B0306,
+            #2B0A15,
+            #0A0305
+        );
+}
+
+.couple-grid{
+    position:relative;
+    z-index:2;
+
+    max-width:1000px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:1fr 100px 1fr;
+
+    gap:25px;
+
+    align-items:center;
+}
+
+.person{
+    text-align:center;
+}
+
+.person-img{
+    position:relative;
+
+    width:270px;
+    height:350px;
+
+    margin:0 auto;
+
+    padding:7px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6F4B1B,
+            #B98A32,
+            #F0D58A,
+            #A8792D,
+            #6F4B1B
+        );
+
+    border-radius:5px;
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.7),
+        0 0 35px rgba(210,165,70,.12);
+}
+
+.person-img::before{
+    content:"";
+
+    position:absolute;
+    inset:5px;
+
+    z-index:2;
+
+    pointer-events:none;
+
+    border:1px solid rgba(255,238,180,.8);
+}
+
+.person-img img{
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+    object-position:center top;
+
+    border-radius:2px;
+}
+
+.person h3{
+    color:var(--gold3);
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:50px;
+
+    font-weight:400;
+
+    margin-top:20px;
+}
+
+.person p{
+    color:var(--gold2);
+
+    font-family:"Cinzel",serif;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    margin-top:3px;
+}
+
+.couple-heart{
+    color:var(--gold3);
+
+    font-size:45px;
+
+    text-align:center;
+}
+
+
+/* =====================================================
+   EVENTS
+===================================================== */
+
+.events{
+    max-width:none;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(122,35,55,.3),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(172,119,39,.09),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            #100407,
+            #250914,
+            #0A0305
+        );
+}
+
+.events-grid{
+    position:relative;
+    z-index:2;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:18px;
+}
+
+.event-card{
+    position:relative;
+
+    min-height:390px;
+
+    overflow:hidden;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:25px 15px;
+
+    border:1px solid rgba(240,213,138,.35);
+
+    background:#1A070D;
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.35);
+
+    transition:.5s;
+}
+
+.event-card:hover{
+    transform:translateY(-8px);
+
+    border-color:var(--gold3);
+}
+
+.event-card img{
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    opacity:.52;
+
+    transition:.6s;
+}
+
+.event-card:hover img{
+    transform:scale(1.08);
+    opacity:.7;
+}
+
+.event-card::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            transparent 5%,
+            rgba(13,3,7,.94) 88%
+        );
+}
+
+.event-content{
+    position:relative;
+    z-index:2;
+}
+
+.event-icon{
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.event-card h3{
+    color:var(--gold3);
+
+    font-family:"Cinzel",serif;
+
+    font-size:20px;
+
+    letter-spacing:2px;
+}
+
+.event-card .date{
+    color:var(--cream);
+
+    font-size:15px;
+
+    margin:7px 0;
+}
+
+.event-card .time{
+    color:var(--cream2);
+
+    font-family:"Cinzel",serif;
+
+    font-size:8px;
+
+    letter-spacing:1.5px;
+}
+
+
+/* =====================================================
+   SCRATCH CARD
+===================================================== */
+
+.scratch-section{
+    max-width:none;
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(106,29,47,.75),
+            transparent 50%
+        ),
+
+        linear-gradient(
+            145deg,
+            #090304,
+            #300B18,
+            #100407
+        );
+}
+
+.scratch-subtitle{
+    position:relative;
+    z-index:2;
+
+    max-width:550px;
+
+    margin:-25px auto 40px;
+
+    color:var(--cream2);
+
+    font-size:17px;
+}
+
+.scratch-card{
+    position:relative;
+
+    width:min(90vw,430px);
+    height:250px;
+
+    margin:auto;
+
+    overflow:hidden;
+
+    border:1px solid var(--gold3);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.65);
+}
+
+.reveal-content{
+    position:absolute;
+
+    inset:0;
+
+    z-index:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #601F31,
+            #210812 70%
+        );
+}
+
+.reveal-small{
+    color:var(--gold3);
+
+    font-family:"Cinzel",serif;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+}
+
+.reveal-content h3{
+    color:var(--gold3);
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:65px;
+
+    font-weight:400;
+
+    margin:5px 0;
+}
+
+.reveal-date{
+    color:var(--cream);
+
+    font-family:"Cinzel",serif;
+
+    font-size:18px;
+
+    letter-spacing:4px;
+}
+
+.reveal-place{
+    color:var(--cream2);
+
+    font-size:14px;
+
+    margin-top:8px;
+}
+
+#scratchCanvas{
+    position:absolute;
+
+    inset:0;
+
+    z-index:3;
+
+    width:100%;
+    height:100%;
+
+    touch-action:none;
+
+    cursor:crosshair;
+}
+
+.scratch-hint{
+    margin-top:22px;
+
+    color:var(--gold3);
+
+    font-family:"Cinzel",serif;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+}
+
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+.countdown-section{
+    max-width:none;
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(113,35,53,.6),
+            transparent 55%
+        ),
+
+        linear-gradient(
+            #0A0306,
+            #250914,
+            #0A0305
+        );
+}
+
+.countdown{
+    position:relative;
+    z-index:2;
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+}
+
+.time-box{
+    width:105px;
+    height:105px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid rgba(240,213,138,.48);
+
+    background:rgba(22,5,10,.6);
+
+    backdrop-filter:blur(10px);
+}
+
+.time-box strong{
+    color:var(--gold3);
+
+    font-family:"Cinzel",serif;
+
+    font-size:29px;
+}
+
+.time-box span{
+    color:var(--cream2);
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+}
+
+
+/* =====================================================
+   STORY
+===================================================== */
+
+.story{
+    position:relative;
+    z-index:2;
+
+    max-width:800px;
+
+    margin:auto;
+
+    color:var(--cream2);
+
+    text-align:center;
+
+    font-size:19px;
+
+    line-height:1.9;
+}
+
+.story-drop{
+    float:left;
+
+    color:var(--gold3);
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:65px;
+
+    line-height:.8;
+
+    padding-right:6px;
+}
+
+
+/* =====================================================
+   MEMORIES
+===================================================== */
+
+.memories{
+    max-width:none;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(104,30,48,.25),
+            transparent 50%
+        );
+}
+
+.gallery-grid{
+    position:relative;
+    z-index:2;
+
+    width:100%;
+    max-width:1100px;
+
+    margin:0 auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+}
+
+.gallery-item{
+    position:relative;
+
+    width:100%;
+
+    height:330px;
+
+    overflow:hidden;
+
+    padding:5px;
+
+    border:1px solid rgba(240,213,138,.45);
+
+    background:#16060B;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.45);
+
+    transition:.45s;
+}
+
+.gallery-item::before{
+    content:"";
+
+    position:absolute;
+
+    inset:8px;
+
+    z-index:2;
+
+    pointer-events:none;
+
+    border:1px solid rgba(240,213,138,.35);
+}
+
+.gallery-item img{
+    display:block;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+    object-position:center;
+
+    transition:.65s;
+}
+
+.gallery-item:hover{
+    transform:translateY(-7px);
+
+    border-color:var(--gold3);
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.65);
+}
+
+.gallery-item:hover img{
+    transform:scale(1.06);
+}
+
+
+/* =====================================================
+   VENUE
+===================================================== */
+
+.venue{
+    max-width:none;
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(112,33,51,.65),
+            transparent 55%
+        ),
+
+        linear-gradient(
+            135deg,
+            #0A0305,
+            #2A0A15,
+            #090304
+        );
+}
+
+.venue-box{
+    position:relative;
+
+    z-index:2;
+
+    max-width:720px;
+
+    margin:auto;
+
+    padding:50px 25px;
+
+    border:1px solid rgba(240,213,138,.45);
+
+    background:rgba(15,4,8,.48);
+
+    backdrop-filter:blur(12px);
+}
+
+.venue-icon{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.venue-box h3{
+    color:var(--gold3);
+
+    font-family:"Cinzel",serif;
+
+    font-size:25px;
+
+    letter-spacing:2px;
+}
+
+.venue-box p{
+    color:var(--cream2);
+
+    font-size:18px;
+
+    line-height:1.7;
+
+    margin:15px 0 25px;
+}
+
+.map-btn{
+    display:inline-block;
+
+    padding:13px 30px;
+
+    border:1px solid var(--gold3);
+
+    color:var(--gold3);
+
+    font-family:"Cinzel",serif;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    transition:.35s;
+
+    text-decoration:none;
+}
+
+.map-btn:hover{
+    background:var(--gold3);
+
+    color:#15050A;
+}
+
+
+/* =====================================================
+   RSVP
+===================================================== */
+
+.rsvp{
+    max-width:none;
+
+    min-height:500px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(112,33,51,.75),
+            transparent 52%
+        ),
+
+        linear-gradient(
+            #250914,
+            #0A0305
+        );
+}
+
+.rsvp h2{
+    color:var(--gold3);
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:75px;
+
+    font-weight:400;
+}
+
+.rsvp p{
+    color:var(--cream2);
+
+    font-size:20px;
+
+    margin:20px 0 30px;
+}
+
+.rsvp-btn{
+    display:inline-block;
+
+    padding:14px 38px;
+
+    border:1px solid var(--gold3);
+
+    color:var(--gold3);
+
+    font-family:"Cinzel",serif;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    transition:.4s;
+
+    text-decoration:none;
+}
+
+.rsvp-btn:hover{
+    background:var(--gold3);
+
+    color:#15050A;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    padding:60px 20px;
+
+    text-align:center;
+
+    background:#060203;
+
+    border-top:1px solid rgba(240,213,138,.25);
+}
+
+footer h3{
+    color:var(--gold3);
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:52px;
+
+    font-weight:400;
+}
+
+footer p{
+    color:var(--cream2);
+
+    font-family:"Cinzel",serif;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    margin-top:8px;
+}
+
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+.music-btn{
+    position:fixed;
+
+    right:18px;
+    bottom:18px;
+
+    z-index:5000;
+
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+
+    border:1px solid var(--gold2);
+
+    background:rgba(15,4,8,.85);
+
+    color:var(--gold3);
+
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media(max-width:900px){
+
+    .events-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .couple-grid{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .couple-heart{
+        order:2;
+    }
+
+    .gallery-grid{
+        grid-template-columns:repeat(3,1fr);
+        gap:12px;
+    }
+
+    .gallery-item{
+        height:270px;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+    section{
+        padding:75px 16px;
+    }
+
+    .door-wrapper{
+        width:82vw;
+        height:70svh;
+        min-height:470px;
+    }
+
+    .door-frame{
+        border-width:4px;
+    }
+
+    .door-frame::before{
+        inset:13px;
+    }
+
+    .door::before{
+        inset:15px;
+    }
+
+    .door-title{
+        font-size:clamp(48px,14vw,75px);
+    }
+
+    .door-small{
+        font-size:8px;
+        letter-spacing:2.5px;
+    }
+
+    .door-subtitle{
+        font-size:8px;
+        letter-spacing:2px;
+        margin-top:20px;
+    }
+
+    .open-btn{
+        bottom:-58px;
+        min-width:160px;
+        padding:13px 20px;
+    }
+
+    .hero{
+        padding:80px 15px;
+    }
+
+    .hero::before{
+        inset:14px;
+    }
+
+    .hero h1{
+        font-size:clamp(75px,23vw,105px);
+    }
+
+    .pre-title{
+        font-size:8px;
+        letter-spacing:3px;
+    }
+
+    .hero-date{
+        font-size:10px;
+        letter-spacing:3px;
+    }
+
+    .section-title h2{
+        font-size:55px;
+    }
+
+    .person-img{
+        width:220px;
+        height:290px;
+        padding:6px;
+    }
+
+    .person h3{
+        font-size:43px;
+    }
+
+    .events-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:9px;
+    }
+
+    .event-card{
+        min-height:300px;
+        padding:14px 7px;
+    }
+
+    .event-card h3{
+        font-size:15px;
+        letter-spacing:1px;
+    }
+
+    .event-card .date{
+        font-size:12px;
+    }
+
+    .event-card .time{
+        font-size:6.5px;
+    }
+
+    .scratch-card{
+        width:94vw;
+        height:225px;
+    }
+
+    .reveal-content h3{
+        font-size:53px;
+    }
+
+    .reveal-date{
+        font-size:15px;
+        letter-spacing:2px;
+    }
+
+    .reveal-place{
+        font-size:12px;
+    }
+
+    .countdown{
+        gap:7px;
+    }
+
+    .time-box{
+        width:calc(25% - 6px);
+        height:80px;
+    }
+
+    .time-box strong{
+        font-size:21px;
+    }
+
+    .time-box span{
+        font-size:7px;
+        letter-spacing:1px;
+    }
+
+    .story{
+        font-size:17px;
+        line-height:1.75;
+    }
+
+    .gallery-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    .gallery-item{
+        width:100%;
+        height:230px;
+        padding:4px;
+    }
+
+    .gallery-item::before{
+        inset:7px;
+    }
+
+    .gallery-item img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+    }
+
+    .venue-box{
+        padding:40px 18px;
+    }
+
+    .venue-box h3{
+        font-size:20px;
+    }
+
+    .venue-box p{
+        font-size:16px;
+    }
+
+    .rsvp{
+        min-height:450px;
+    }
+
+    .rsvp h2{
+        font-size:60px;
+    }
+
+    .rsvp p{
+        font-size:17px;
+    }
+}
+
+
+/* =====================================================
+   SMALL PHONE
+===================================================== */
+
+@media(max-width:380px){
+
+    .events-grid{
+        grid-template-columns:1fr;
+    }
+
+    .event-card{
+        min-height:340px;
+    }
+
+    .gallery-item{
+        height:270px;
+    }
+
+    .hero h1{
+        font-size:70px;
+    }
+}
+
+</style>
+</head>
+
+
+<body class="locked">
+
+
+<!-- =====================================================
+     OPENING DOOR
+===================================================== -->
+
+<div id="doorScreen">
+
+    <div class="door-wrapper">
+
+        <div class="door-frame"></div>
+
+        <div class="door left"></div>
+
+        <div class="door right"></div>
+
+
+        <!-- TEXT INSIDE DOOR -->
+
+        <div class="door-content">
+
+            <div class="door-small">
+                YOU ARE CORDIALLY INVITED
+            </div>
+
+            <div class="door-title">
+                <span>A Royal</span>
+                <span>Celebration</span>
+            </div>
+
+            <div class="door-subtitle">
+                THE WEDDING OF
+            </div>
+
+        </div>
+
+
+        <!-- ONLY THIS IS OUTSIDE -->
+
+        <button
+            class="open-btn"
+            id="openInvitation">
+
+            TAP TO OPEN
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     WEBSITE
+===================================================== -->
+
+<div id="website">
+
+
+<button
+    class="back-btn"
+    onclick="goBack()">
+
+    ← BACK TO COVER
+
+</button>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="pre-title">
+            TOGETHER WITH THEIR FAMILIES
+        </div>
+
+        <h1>
+            Aarav
+
+            <span class="amp">
+                &
+            </span>
+
+            Anaya
+        </h1>
+
+        <div class="gold-line"></div>
+
+        <div class="hero-date">
+            20 • OCTOBER • 2026
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     COUPLE
+===================================================== -->
+
+<section class="couple">
+
+    <div class="section-title">
+
+        <span>
+            TWO HEARTS • ONE SOUL
+        </span>
+
+        <h2>
+            The Couple
+        </h2>
+
+    </div>
+
+
+    <div class="couple-grid">
+
+
+        <div class="person">
+
+            <div class="person-img">
+
+                <img
+                    src="groom.webp"
+                    alt="Groom">
+
+            </div>
+
+            <h3>
+                Aarav
+            </h3>
+
+            <p>
+                THE GROOM
+            </p>
+
+        </div>
+
+
+        <div class="couple-heart">
+            ♡
+        </div>
+
+
+        <div class="person">
+
+            <div class="person-img">
+
+                <img
+                    src="bride.webp"
+                    alt="Bride">
+
+            </div>
+
+            <h3>
+                Anaya
+            </h3>
+
+            <p>
+                THE BRIDE
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FUNCTIONS
+===================================================== -->
+
+<section class="events">
+
+    <div class="section-title">
+
+        <span>
+            THE WEDDING CELEBRATIONS
+        </span>
+
+        <h2>
+            Our Functions
+        </h2>
+
+    </div>
+
+
+    <div class="events-grid">
+
+
+        <div class="event-card">
+
+            <img
+                src="haldi.webp"
+                alt="Haldi">
+
+            <div class="event-content">
+
+                <div class="event-icon">
+                    🌼
+                </div>
+
+                <h3>
+                    Haldi
+                </h3>
+
+                <div class="date">
+                    17 October 2026
+                </div>
+
+                <div class="time">
+                    11:00 AM • ROYAL COURTYARD
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="event-card">
+
+            <img
+                src="mehndi.webp"
+                alt="Mehndi">
+
+            <div class="event-content">
+
+                <div class="event-icon">
+                    🌿
+                </div>
+
+                <h3>
+                    Mehndi
+                </h3>
+
+                <div class="date">
+                    18 October 2026
+                </div>
+
+                <div class="time">
+                    05:00 PM • GARDEN LAWN
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="event-card">
+
+            <img
+                src="sangeet.webp"
+                alt="Sangeet">
+
+            <div class="event-content">
+
+                <div class="event-icon">
+                    🎶
+                </div>
+
+                <h3>
+                    Sangeet
+                </h3>
+
+                <div class="date">
+                    19 October 2026
+                </div>
+
+                <div class="time">
+                    07:00 PM • GRAND BALLROOM
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="event-card">
+
+            <img
+                src="wedding.webp"
+                alt="Wedding">
+
+            <div class="event-content">
+
+                <div class="event-icon">
+                    💍
+                </div>
+
+                <h3>
+                    Shaadi
+                </h3>
+
+                <div class="date">
+                    20 October 2026
+                </div>
+
+                <div class="time">
+                    07:30 PM • AMBIENCE RESORT
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SCRATCH CARD
+===================================================== -->
+
+<section class="scratch-section">
+
+    <div class="section-title">
+
+        <span>
+            A LITTLE SECRET AWAITS
+        </span>
+
+        <h2>
+            Reveal The Date
+        </h2>
+
+    </div>
+
+
+    <p class="scratch-subtitle">
+
+        Scratch the card below
+        and discover the day
+        our forever begins.
+
+    </p>
+
+
+    <div class="scratch-card">
+
+        <div class="reveal-content">
+
+            <div class="reveal-small">
+                OUR WEDDING DAY
+            </div>
+
+            <h3>
+                20 October
+            </h3>
+
+            <div class="reveal-date">
+                TUESDAY • 2026
+            </div>
+
+            <div class="reveal-place">
+                Ambience Resort • Shahabad Markanda
+            </div>
+
+        </div>
+
+        <canvas id="scratchCanvas"></canvas>
+
+    </div>
+
+
+    <div class="scratch-hint">
+        ✦ SCRATCH TO REVEAL ✦
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     COUNTDOWN
+===================================================== -->
+
+<section class="countdown-section">
+
+    <div class="section-title">
+
+        <span>
+            THE BIG DAY
+        </span>
+
+        <h2>
+            Counting Down
+        </h2>
+
+    </div>
+
+
+    <div class="countdown">
+
+        <div class="time-box">
+            <strong id="days">00</strong>
+            <span>Days</span>
+        </div>
+
+        <div class="time-box">
+            <strong id="hours">00</strong>
+            <span>Hours</span>
+        </div>
+
+        <div class="time-box">
+            <strong id="minutes">00</strong>
+            <span>Minutes</span>
+        </div>
+
+        <div class="time-box">
+            <strong id="seconds">00</strong>
+            <span>Seconds</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     STORY
+===================================================== -->
+
+<section>
+
+    <div class="section-title">
+
+        <span>
+            OUR JOURNEY
+        </span>
+
+        <h2>
+            A Little Story
+        </h2>
+
+    </div>
+
+
+    <div class="story">
+
+        <span class="story-drop">
+            O
+        </span>
+
+        nce upon a time, two hearts
+        crossed paths and slowly discovered
+        that they were meant to walk
+        through life together.
+
+        <br><br>
+
+        From the first smile to countless
+        memories, their journey has been
+        filled with laughter, love and
+        beautiful moments.
+
+        <br><br>
+
+        And now, surrounded by the people
+        they love, they are ready to begin
+        their forever.
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     OUR MEMORIES
+===================================================== -->
+
+<section class="memories">
+
+    <div class="section-title">
+
+        <span>
+            MOMENTS TO REMEMBER
+        </span>
+
+        <h2>
+            Our Memories
+        </h2>
+
+    </div>
+
+
+    <div class="gallery-grid">
+
+        <div class="gallery-item">
+
+            <img
+                src="photo1.webp"
+                alt="Our Memory 1">
+
+        </div>
+
+
+        <div class="gallery-item">
+
+            <img
+                src="photo2.webp"
+                alt="Our Memory 2">
+
+        </div>
+
+
+        <div class="gallery-item">
+
+            <img
+                src="photo3.webp"
+                alt="Our Memory 3">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     VENUE
+===================================================== -->
+
+<section class="venue">
+
+    <div class="section-title">
+
+        <span>
+            WHERE WE CELEBRATE
+        </span>
+
+        <h2>
+            The Venue
+        </h2>
+
+    </div>
+
+
+    <div class="venue-box">
+
+        <div class="venue-icon">
+            📍
+        </div>
+
+        <h3>
+            Ambience Resort
+        </h3>
+
+        <p>
+            Shahabad Markanda
+            <br>
+            Haryana, India
+        </p>
+
+
+        <a
+            class="map-btn"
+            href="https://www.google.com/maps/search/?api=1&query=Ambience+Resort+Shahabad+Markanda+Haryana"
+            target="_blank">
+
+            VIEW ON MAP
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     RSVP
+===================================================== -->
+
+<section class="rsvp">
+
+    <div>
+
+        <h2>
+            Will You Join Us?
+        </h2>
+
+        <p>
+            Your presence would make
+            our celebration even more beautiful.
+        </p>
+
+
+        <!-- RSVP WHATSAPP BUTTON -->
+
+        <a
+            class="rsvp-btn"
+            href="https://wa.me/7082601905?text=Hello%20Aarav%20%26%20Anaya%2C%20I%20would%20love%20to%20join%20your%20wedding%20celebration%20on%2020%20October%202026.%20%F0%9F%92%8D"
+            target="_blank">
+
+            RSVP NOW
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <h3>
+        Aarav & Anaya
+    </h3>
+
+    <p>
+        FOREVER BEGINS HERE • 20 OCTOBER 2026
+    </p>
+
+</footer>
+
+</div>
+
+
+
+<!-- =====================================================
+     MUSIC
+===================================================== -->
+
+<audio
+    id="weddingMusic"
+    loop>
+
+    <source
+        src="Aaj Sajeya Goldie Sohel 320 Kbps.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<button
+    class="music-btn"
+    id="musicButton">
+
+    ♫
+
+</button>
+
+
+
+<script>
+
+/* =====================================================
+   OPEN DOOR
+===================================================== */
+
+const doorScreen =
+document.getElementById("doorScreen");
+
+const openButton =
+document.getElementById("openInvitation");
+
+const website =
+document.getElementById("website");
+
+const music =
+document.getElementById("weddingMusic");
+
+
+openButton.addEventListener("click",()=>{
+
+    doorScreen.classList.add("open");
+
+    setTimeout(()=>{
+
+        website.classList.add("show");
+
+        document.body.classList.remove("locked");
+
+    },1000);
+
+
+    setTimeout(()=>{
+
+        doorScreen.style.display="none";
+
+    },2300);
+
+
+    music.play().catch(()=>{});
+
+});
+
+
+/* =====================================================
+   BACK TO COVER
+===================================================== */
+
+function goBack(){
+
+    website.classList.remove("show");
+
+    doorScreen.style.display="flex";
+
+    document.body.classList.add("locked");
+
+    window.scrollTo({
+        top:0,
+        behavior:"instant"
+    });
+
+
+    setTimeout(()=>{
+
+        doorScreen.classList.remove("open");
+
+        openButton.style.opacity="1";
+        openButton.style.pointerEvents="auto";
+
+    },100);
+
+}
+
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+const musicButton =
+document.getElementById("musicButton");
+
+
+musicButton.addEventListener("click",()=>{
+
+    if(music.paused){
+
+        music.play();
+
+    }else{
+
+        music.pause();
+
+    }
+
+});
+
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+const weddingDate =
+new Date("October 20, 2026 19:30:00").getTime();
+
+
+function updateCountdown(){
+
+    const now =
+    new Date().getTime();
+
+    const difference =
+    weddingDate-now;
+
+
+    if(difference<=0){
+
+        document.getElementById("days").innerText="00";
+        document.getElementById("hours").innerText="00";
+        document.getElementById("minutes").innerText="00";
+        document.getElementById("seconds").innerText="00";
+
+        return;
+    }
+
+
+    const days =
+    Math.floor(
+        difference/(1000*60*60*24)
+    );
+
+
+    const hours =
+    Math.floor(
+        (difference%(1000*60*60*24))/
+        (1000*60*60)
+    );
+
+
+    const minutes =
+    Math.floor(
+        (difference%(1000*60*60))/
+        (1000*60)
+    );
+
+
+    const seconds =
+    Math.floor(
+        (difference%(1000*60))/1000
+    );
+
+
+    document.getElementById("days").innerText =
+        String(days).padStart(2,"0");
+
+    document.getElementById("hours").innerText =
+        String(hours).padStart(2,"0");
+
+    document.getElementById("minutes").innerText =
+        String(minutes).padStart(2,"0");
+
+    document.getElementById("seconds").innerText =
+        String(seconds).padStart(2,"0");
+
+}
+
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+
+
+/* =====================================================
+   SCRATCH CARD
+===================================================== */
+
+const scratchCanvas =
+document.getElementById("scratchCanvas");
+
+const scratchCard =
+document.querySelector(".scratch-card");
+
+const ctx =
+scratchCanvas.getContext("2d");
+
+let scratching=false;
+
+let scratchCount=0;
+
+
+function setupScratch(){
+
+    const rect =
+    scratchCard.getBoundingClientRect();
+
+    const dpr =
+    window.devicePixelRatio || 1;
+
+
+    scratchCanvas.width =
+        rect.width*dpr;
+
+    scratchCanvas.height =
+        rect.height*dpr;
+
+
+    scratchCanvas.style.width =
+        rect.width+"px";
+
+    scratchCanvas.style.height =
+        rect.height+"px";
+
+
+    ctx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+    );
+
+
+    const gradient =
+    ctx.createLinearGradient(
+        0,
+        0,
+        rect.width,
+        rect.height
+    );
+
+
+    gradient.addColorStop(
+        0,
+        "#8D6425"
+    );
+
+    gradient.addColorStop(
+        .5,
+        "#F0D58A"
+    );
+
+    gradient.addColorStop(
+        1,
+        "#B9852C"
+    );
+
+
+    ctx.globalCompositeOperation =
+        "source-over";
+
+    ctx.fillStyle =
+        gradient;
+
+
+    ctx.fillRect(
+        0,
+        0,
+        rect.width,
+        rect.height
+    );
+
+
+    ctx.fillStyle =
+        "#35151C";
+
+    ctx.textAlign =
+        "center";
+
+    ctx.font =
+        "600 13px Cinzel";
+
+
+    ctx.fillText(
+        "SCRATCH TO REVEAL",
+        rect.width/2,
+        rect.height/2
+    );
+
+}
+
+
+setupScratch();
+
+
+window.addEventListener(
+    "resize",
+    setupScratch
+);
+
+
+function getPosition(event){
+
+    const rect =
+    scratchCanvas.getBoundingClientRect();
+
+
+    return{
+        x:event.clientX-rect.left,
+        y:event.clientY-rect.top
+    };
+
+}
+
+
+function scratch(event){
+
+    if(!scratching)
+        return;
+
+
+    event.preventDefault();
+
+
+    const pos =
+    getPosition(event);
+
+
+    ctx.globalCompositeOperation =
+        "destination-out";
+
+
+    ctx.beginPath();
+
+
+    ctx.arc(
+        pos.x,
+        pos.y,
+        25,
+        0,
+        Math.PI*2
+    );
+
+
+    ctx.fill();
+
+
+    scratchCount++;
+
+
+    if(scratchCount%10===0){
+
+        checkScratch();
+
+    }
+
+}
+
+
+scratchCanvas.addEventListener(
+    "pointerdown",
+    event=>{
+
+        scratching=true;
+
+        scratch(event);
+
+    }
+);
+
+
+scratchCanvas.addEventListener(
+    "pointermove",
+    scratch
+);
+
+
+["pointerup","pointercancel","pointerleave"]
+
+.forEach(type=>{
+
+    scratchCanvas.addEventListener(
+        type,
+        ()=>{
+            scratching=false;
+        }
+    );
+
+});
+
+
+function checkScratch(){
+
+    const data =
+    ctx.getImageData(
+        0,
+        0,
+        scratchCanvas.width,
+        scratchCanvas.height
+    ).data;
+
+
+    let transparent=0;
+
+
+    for(
+        let i=3;
+        i<data.length;
+        i+=4
+    ){
+
+        if(data[i]<80){
+
+            transparent++;
+
+        }
+
+    }
+
+
+    const percentage =
+        transparent/(data.length/4);
+
+
+    if(percentage>.48){
+
+        ctx.clearRect(
+            0,
+            0,
+            scratchCanvas.width,
+            scratchCanvas.height
+        );
+
+
+        scratchCanvas.style.pointerEvents =
+            "none";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+
+
